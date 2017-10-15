@@ -42,3 +42,26 @@ CountdownAction OnFinish;
 ## Ejemplos
 La librería Countdown incluye los siguientes ejemplos para ilustrar su uso.
 * Countdown: Ejemplo de uso de la clase Countdown.
+
+```c++
+#include "CountdownLib.h"
+
+#define DEBUG(A) Serial.println(A);
+
+Countdown countDown(10, []() {
+	DEBUG("Finish");
+	countDown.Reset();
+});
+
+void setup()
+{
+	Serial.begin(115200);
+}
+
+void loop() 
+{
+	DEBUG(countDown.Value);
+	countDown.Tick();
+	delay(1000);
+}
+```
